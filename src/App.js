@@ -2,6 +2,8 @@ import './App.css';
 import React, { useState } from "react";
 import imagemCachorro from './assets/cachorro.jpg';
 import imagemGato from './assets/gato.jpg';
+import CardAnimal from './components/CardAnimal';
+import CardInformacoes from './components/CardInformacoes';
 
 
 function App() {
@@ -13,14 +15,14 @@ function App() {
   const [tipoDoComponenteCard, setTipoDoComponenteCard] = useState("cachorro");
 
   const alterarState = () => {
-    if (tipoDoComponenteCard === "cachorro"){
+    if (tipoDoComponenteCard === "cachorro") {
       setTipoDoComponenteCard("gato");
     } else {
       setTipoDoComponenteCard("cachorro");
     }
   }
 
-  if(tipoDoComponenteCard === "cachorro") {
+  if (tipoDoComponenteCard === "cachorro") {
     imagemAnimal = imagemCachorro;
     informacaoAnimal = "É um mamífero carnívoro da família dos canídeos.";
     tipoAnimal = "cachorro";
@@ -38,14 +40,11 @@ function App() {
         <button onClick={alterarState}>Mudar Animal</button>
       </header>
 
-      <div id="cardAnimal">
-        <img src={imagemAnimal} alt="animal" />
-      </div>
-
-      <div className="CardInformacao">
-        <h3>Informação sobre o {tipoAnimal}</h3>
-        <p>{informacaoAnimal}</p>
-      </div>
+      <CardAnimal imagemAnimal={imagemAnimal} />
+      <CardInformacoes
+        tipoAnimal={tipoAnimal}
+        informacaoAnimal={informacaoAnimal}
+      />
 
     </div>
   );
